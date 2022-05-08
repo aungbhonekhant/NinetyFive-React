@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useAuth from '../hooks/useAuth'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import {styled } from '@mui/material/styles';
 import { Avatar, Button, Container, Grid, Paper, TextField } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
@@ -43,10 +43,11 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const authUser = users.find(u =>{ 
+        const authUser = users.find(u => { 
             if(u.email === user && u.password === pwd){
                 return true;
-            }   
+            } 
+            return false; 
         });
         if(authUser){
             const token = authUser.name + authUser.role;
